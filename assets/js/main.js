@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // home section
     const descriptions = {
       en: "A young developer seeking experiences in Software, Electrical, and Mechanical Engineering.",
-      pl: "Młody programista poszukujący doświadczeń w dziedzinie inżynierii oprogramowania, elektrycznej i mechanicznej.",
+      pl: "Młody programista poszukujący doświadczeń w dziedzinie inżynierii oprogramowania oraz inżynierii elektrycznej i mechanicznej.",
     };
 
     // skills section
