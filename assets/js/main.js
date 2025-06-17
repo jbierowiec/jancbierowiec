@@ -136,6 +136,10 @@ document.addEventListener("DOMContentLoaded", () => {
       en: "App Development",
       pl: "Rozwój Aplikacji",
     };
+    const robotics = {
+      en: "Robotics",
+      pl: "Robotyka",
+    };
 
     // portfolio section
     const portfolio_title = {
@@ -147,18 +151,61 @@ document.addEventListener("DOMContentLoaded", () => {
       pl: "Najnowsza Praca",
     };
 
-    const web1 = {
+    const all_filter = {
+      en: "All",
+      pl: "Wszystko",
+    };
+    const web_development_filter = {
+      en: "Web Development",
+      pl: "Opracowane Strony Internetowe",
+    };
+    const web_design_filter = {
+      en: "Web Design",
+      pl: "Zaprojektowane Strony Internetowe",
+    };
+    const app_filter = {
+      en: "App Development",
+      pl: "Opracowane Aplikacje",
+    };
+
+    const web_development1 = {
+      en: "Physim",
+      pl: "Physim",
+    };
+    const web_development2 = {
+      en: "PocketBookApps",
+      pl: "PocketBookApps",
+    };
+    const web_development3 = {
+      en: "MyCyberLab",
+      pl: "MyCyberLab",
+    };
+
+    const web_design1 = {
       en: "Micro SaaS Landing Page",
       pl: "Strona Docelowa Dirmy Micro SaaS",
     };
-    const web2 = {
+    const web_design2 = {
       en: "Technology Landing Page",
       pl: "Strona Docelowa Firmy Technologicznej",
-    }
-    const web3 = {
+    };
+    const web_design3 = {
       en: "Construction Landing Page",
       pl: "Strona Docelowa Firmy Budowlanej",
-    }
+    };
+
+    const app1 = {
+      en: "Mathematical Proofs",
+      pl: "Dowody Matematyczne",
+    };
+    const app2 = {
+      en: "Biology Definitions",
+      pl: "Definicje Biologiczne",
+    };
+    const app3 = {
+      en: "Polonia Internationalis",
+      pl: "Polonia Internationalis",
+    };
 
     // contact section
     const contact_title = {
@@ -238,6 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("prog_tool").textContent = prog_tool[lang];
     document.getElementById("graph_desgn").textContent = graph_desgn[lang];
     document.getElementById("app_dev").textContent = app_dev[lang];
+    document.getElementById("robotics").textContent = robotics[lang];
 
     // portfolio section
     document.getElementById("portfolio_title").textContent =
@@ -245,10 +293,28 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("portfolio_subtitle").textContent =
       portfolio_subtitle[lang];
 
-    // web design 
-    document.getElementById("web1").textContent = web1[lang];
-    document.getElementById("web2").textContent = web2[lang];
-    document.getElementById("web3").textContent = web3[lang];
+    document.getElementById("all_filter").textContent = all_filter[lang];
+    document.getElementById("web_development_filter").textContent = web_development_filter[lang];
+    document.getElementById("web_design_filter").textContent = web_design_filter[lang];
+    document.getElementById("app_filter").textContent = app_filter[lang];
+
+    // web development
+    document.getElementById("web_development1").textContent =
+      web_development1[lang];
+    document.getElementById("web_development2").textContent =
+      web_development2[lang];
+    document.getElementById("web_development3").textContent =
+      web_development3[lang];
+
+    // web design
+    document.getElementById("web_design1").textContent = web_design1[lang];
+    document.getElementById("web_design2").textContent = web_design2[lang];
+    document.getElementById("web_design3").textContent = web_design3[lang];
+
+    // app development
+    document.getElementById("app1").textContent = app1[lang];
+    document.getElementById("app2").textContent = app2[lang];
+    document.getElementById("app3").textContent = app3[lang];
 
     // contact section
     document.getElementById("contact_title").textContent = contact_title[lang];
@@ -278,11 +344,17 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", function () {
   const languageSelector = document.getElementById("navLanguage");
   const languageList = document.getElementById("languageList");
-  const navLanguage = document.getElementById("navLanguage");
+  //const navLanguage = document.getElementById("navLanguage");
   const languageOptions = languageList.querySelectorAll("li");
 
-  navLanguage.addEventListener("click", function () {
+  languageSelector.addEventListener("click", () => {
     languageList.classList.toggle("active");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!languageSelector.contains(e.target) && !languageList.contains(e.target)) {
+      languageList.classList.remove("active");
+    }
   });
 
   // Initially hide the language list
@@ -305,6 +377,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+/*
 document.addEventListener("DOMContentLoaded", function () {
   const filterButtons = document.querySelectorAll(".portfolio__item");
   const projects = document.querySelectorAll(".portfolio__card");
@@ -323,13 +396,43 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+*/
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbyI7zXIglHx9zAPdcmCJDvYXYDLTC_SglJ3qMV_LjiRha7dqRV0JevuMc5uQZ8kCoru/exec'
-const form = document.forms['contact-form']
+document.addEventListener("DOMContentLoaded", function () {
+  const filterButtons = document.querySelectorAll(".portfolio__item");
+  const projects = document.querySelectorAll(".portfolio__card");
 
-form.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-    .then(() => { window.location.reload(); })
-    .catch(error => console.error('Error!', error.message))
-})
+  const categoryMap = {
+    all_filter: "all",
+    web_development_filter: "web_development",
+    web_design_filter: "web_design",
+    app_filter: "app",
+  };
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const category = categoryMap[button.id];
+
+      projects.forEach((project) => {
+        if (category === "all" || project.dataset.category === category) {
+          project.style.display = "";
+        } else {
+          project.style.display = "none";
+        }
+      });
+    });
+  });
+});
+
+const scriptURL =
+  "https://script.google.com/macros/s/AKfycbyI7zXIglHx9zAPdcmCJDvYXYDLTC_SglJ3qMV_LjiRha7dqRV0JevuMc5uQZ8kCoru/exec";
+const form = document.forms["contact-form"];
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  fetch(scriptURL, { method: "POST", body: new FormData(form) })
+    .then(() => {
+      window.location.reload();
+    })
+    .catch((error) => console.error("Error!", error.message));
+});
