@@ -167,6 +167,10 @@ document.addEventListener("DOMContentLoaded", () => {
       en: "App Development",
       pl: "Opracowane Aplikacje",
     };
+    const simulation_filter = {
+      en: "Simulations",
+      pl: "Symulacje",
+    };
 
     const web_development1 = {
       en: "Physim",
@@ -205,6 +209,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const app3 = {
       en: "Polonia Internationalis",
       pl: "Polonia Internationalis",
+    };
+
+    const simulation1 = {
+      en: "E&M Field Visualizer",
+      pl: "Wizualizator Pola E&M",
     };
 
     // contact section
@@ -297,6 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("web_development_filter").textContent = web_development_filter[lang];
     document.getElementById("web_design_filter").textContent = web_design_filter[lang];
     document.getElementById("app_filter").textContent = app_filter[lang];
+    document.getElementById("simulation_filter").textContent = simulation_filter[lang];
 
     // web development
     document.getElementById("web_development1").textContent =
@@ -315,6 +325,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("app1").textContent = app1[lang];
     document.getElementById("app2").textContent = app2[lang];
     document.getElementById("app3").textContent = app3[lang];
+
+    // simulation development 
+    document.getElementById("simulation1").textContent = simulation1[lang];
 
     // contact section
     document.getElementById("contact_title").textContent = contact_title[lang];
@@ -407,6 +420,7 @@ document.addEventListener("DOMContentLoaded", function () {
     web_development_filter: "web_development",
     web_design_filter: "web_design",
     app_filter: "app",
+    simulation_filter: "simulation",
   };
 
   filterButtons.forEach((button) => {
