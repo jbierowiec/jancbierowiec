@@ -32,9 +32,15 @@ This website is designed to be simple, responsive, and visually appealing. It fe
 │       ├── main.js
 │       └── swiper-bundle.min.js
 ├── images
+│   ├── MyCyberLab.png
+│   ├── Physim.png
+│   ├── PocketBookApps.png
+│   ├── biology_definitions.png
 │   ├── construction_landing_page.png
 │   ├── github-profile-pic.png
+│   ├── math_proofs.png
 │   ├── micro_saas_landing_page.png
+│   ├── polonia_internationalis.png
 │   └── technology_landing_page.png
 └── index.html
 ```
