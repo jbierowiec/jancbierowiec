@@ -171,6 +171,10 @@ document.addEventListener("DOMContentLoaded", () => {
       en: "Simulations",
       pl: "Symulacje",
     };
+    const game_filter = {
+      en: "Game Development",
+      pl: "Rozwój Gier",
+    };
 
     const web_development1 = {
       en: "Physim",
@@ -215,6 +219,11 @@ document.addEventListener("DOMContentLoaded", () => {
       en: "E&M Field Visualizer",
       pl: "Wizualizator Pola E&M",
     };
+
+    const game1 = {
+      en: "Sudoku Game",
+      pl: "Sudoku",
+    }
 
     // contact section
     const contact_title = {
@@ -307,6 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("web_design_filter").textContent = web_design_filter[lang];
     document.getElementById("app_filter").textContent = app_filter[lang];
     document.getElementById("simulation_filter").textContent = simulation_filter[lang];
+    document.getElementById("game_filter").textContent = game_filter[lang];
 
     // web development
     document.getElementById("web_development1").textContent =
@@ -328,6 +338,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // simulation development 
     document.getElementById("simulation1").textContent = simulation1[lang];
+
+    // game development
+    document.getElementById("game1").textContent = game1[lang];
 
     // contact section
     document.getElementById("contact_title").textContent = contact_title[lang];
@@ -390,27 +403,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-/*
-document.addEventListener("DOMContentLoaded", function () {
-  const filterButtons = document.querySelectorAll(".portfolio__item");
-  const projects = document.querySelectorAll(".portfolio__card");
-
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const category = button.id.replace("_filter", ""); // Gets the category from the button id
-
-      projects.forEach((project) => {
-        if (category === "all" || project.dataset.category === category) {
-          project.style.display = "";
-        } else {
-          project.style.display = "none";
-        }
-      });
-    });
-  });
-});
-*/
-
 document.addEventListener("DOMContentLoaded", function () {
   const filterButtons = document.querySelectorAll(".portfolio__item");
   const projects = document.querySelectorAll(".portfolio__card");
@@ -421,6 +413,7 @@ document.addEventListener("DOMContentLoaded", function () {
     web_design_filter: "web_design",
     app_filter: "app",
     simulation_filter: "simulation",
+    game_filter: "game",
   };
 
   filterButtons.forEach((button) => {
@@ -428,7 +421,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const category = categoryMap[button.id];
 
       projects.forEach((project) => {
-        if (category === "all" || project.dataset.category === category) {
+        const categories = project.dataset.category.split(" ");
+
+        if (category === "all" || categories.includes(category)) {
           project.style.display = "";
         } else {
           project.style.display = "none";

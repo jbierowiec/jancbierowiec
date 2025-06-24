@@ -513,13 +513,6 @@ img {
 }
 
 .skills__img-container {
-  /*
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-  */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
@@ -536,11 +529,12 @@ img {
 /*==================== PORTFOLIO ====================*/
 .portfolio__filters {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   column-gap: 0.75rem;
-  margin-bottom: var(--mb-2);
-  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto var(--mb-2) auto;
 }
 
 .portfolio__item {
@@ -571,14 +565,6 @@ img {
   padding: 1.25rem;
   border-radius: 1rem;
 }
-
-/*
-.portfolio__img {
-  width: 295px;
-  border-radius: 1rem;
-  margin-bottom: var(--mb-1);
-}
-*/
 
 .portfolio__img {
   width: 295px;
